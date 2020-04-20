@@ -8,7 +8,7 @@ import imaplib
 import email
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
    
-mail.login('guookee@gmail.com', 'UNIiii2020')
+mail.login('username', 'password')
    
    
 mail.list() 
