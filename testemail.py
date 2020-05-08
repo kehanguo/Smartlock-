@@ -1,10 +1,13 @@
 import imaplib
 import email
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
-   
+import RPi.GPIO as IO   
 mail.login('email', 'password')
    
-   
+GPIO.setup(servopin,GPIO.OUT)
+pwm=GPIO.PWM(servopin,50)
+pwm.start(10.5)
+
 mail.list() 
 mail.select('inbox') 
 result, data = mail.uid('search', None, "unseen")
@@ -31,9 +34,14 @@ for x in range(i):
             
             if messajbody == str_a:
                 print(str_b)
+                pwm.ChangeDutyCycle(10.5)
+
+                  
                 
             if messajbody == str_b:
                 print(str_a)
+                pwm.ChangeDutyCycle(3.5)
+
             else:
                 print(messajbody)
             print(messajbody)
